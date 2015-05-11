@@ -19,7 +19,7 @@
 	<th colspan="2" scope="col"><a href="http://bmkg.go.id/BMKG_Pusat/Gempabumi_-_Tsunami/Gempabumi/Gempabumi_Terkini.bmkg" target="_blank">Informasi Gempa Terkini</a></th>
 </tr>
 <tr>
-	<th colspan="2" scope="col"><? echo "<img src='http://dataweb.bmkg.go.id/INATEWS/eqmap.gif'><br/>"; ?></th>
+	<td colspan="2" scope="col"><? echo "<img style='width:100%' src='http://dataweb.bmkg.go.id/INATEWS/eqmap.gif'><br/>"; ?></td>
 </tr>
 <tr>
 	<td width="70">Tanggal</td>
@@ -46,7 +46,7 @@
 	<td><? echo ": " .$xml->gempa->Kedalaman. "</b>"; ?></td>
 </tr>
 <tr>
-	<td colspan="2"><div align="center"><? echo " " .$xml->gempa->Wilayah. "</b>"; ?></th>
+	<td colspan="2"><div align="center"><? echo "Wilayah : " .$xml->gempa->Wilayah. "</b>"; ?></th>
 </tr>
 <tr>
 	<td colspan="2"><div align="center"><? echo "Koordinat : " .$xml->gempa->point->coordinates. "</b>"; ?></th>
