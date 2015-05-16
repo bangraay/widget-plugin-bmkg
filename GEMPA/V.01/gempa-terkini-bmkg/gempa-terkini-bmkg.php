@@ -2,7 +2,7 @@
 /**
 * Plugin Name: Gempa Bumi Terkini BMKG
 * Plugin URI: http://greenbox.web.id
-* Github Theme URI: https://github.com/greenboxindonesia/widget-plugin-bmkg
+* Github Plugin URI: https://github.com/greenboxindonesia/widget-plugin-bmkg
 * Description: Plugin XML Parse php Gempa Bumi Terkini dari BMKG untuk platform wordpress.
 * Version: 1.0
 * Author: Albert Sukmono
