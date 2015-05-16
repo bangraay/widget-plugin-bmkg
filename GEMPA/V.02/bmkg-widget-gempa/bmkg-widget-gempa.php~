@@ -1,12 +1,13 @@
 <?php
 /*
 Plugin Name: BMKG - Widget Gempa Bumi
-* Plugin URI: http://greenbox.web.id
+* Plugin URI: https://github.com/greenboxindonesia/widget-plugin-bmkg
 * Github Plugin URI: https://github.com/greenboxindonesia/widget-plugin-bmkg
+* Facebook Page: http://www.fb.com/greenboxindonesia
 * Description: Plugin XML Parse php Gempa Bumi Terkini dari BMKG untuk platform wordpress.
-* Version: 1.0
+* Version: 2.0
 * Author: Albert Sukmono
-* Author URI: https://www.facebook.com/greenboxindonesia
+* Author URI: http://www.albert.sukmono.web.id/
 * Copyright (c) 2015, Albert Sukmono (http://albert.sukmono.web.id/)
 *
 * This program is distributed in the hope that it will be useful,
@@ -21,7 +22,18 @@ class BMKG_Code_Widget extends WP_Widget {
 		$control_ops = array('width' => 400, 'height' => 350);
 		$this->WP_Widget('bmkg-widget-gempa', __('BMKG: Gempa Terkini', 'bmkg-widget-gempa'), $widget_ops, $control_ops);
 	}
-
+	//Form Input Title di WIdget dan ditampilkan di front page
+	function form( $instance ) {
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '' ) );
+		$title = strip_tags($instance['title']);
+		$text = format_to_edit($instance['text']);
+?>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'bmkg-widget-gempa'); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+		
+<?php
+	}
+	//Function widget untuk menampilkan data yang di ambil data BMKG
 	function widget( $args, $instance ) {
 		extract($args);
 		$title = apply_filters( 'widget_title', empty($instance['title']) ? '' : $instance['title'], $instance );
@@ -78,17 +90,6 @@ class BMKG_Code_Widget extends WP_Widget {
 		echo "</tr>";
 		echo "</table>";
 		//End Script GEMPA
-	}
-
-	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '' ) );
-		$title = strip_tags($instance['title']);
-		$text = format_to_edit($instance['text']);
-?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'bmkg-widget-gempa'); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
-		
-<?php
 	}
 }
 

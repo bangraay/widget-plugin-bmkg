@@ -22,16 +22,27 @@ class BMKG_Code_Widget extends WP_Widget {
 		$control_ops = array('width' => 400, 'height' => 350);
 		$this->WP_Widget('bmkg-widget-gempa', __('BMKG: Gempa Terkini', 'bmkg-widget-gempa'), $widget_ops, $control_ops);
 	}
-
+	//Form Input Title di WIdget dan ditampilkan di front page
+	function form( $instance ) {
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '' ) );
+		$title = strip_tags($instance['title']);
+		$text = format_to_edit($instance['text']);
+?>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'bmkg-widget-gempa'); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+		
+<?php
+	}
+	//Function widget untuk menampilkan data yang di ambil data BMKG
 	function widget( $args, $instance ) {
 		extract($args);
 		$title = apply_filters( 'widget_title', empty($instance['title']) ? '' : $instance['title'], $instance );
 		$text = apply_filters( 'widget_bmkg-widget-gempa', $instance['text'], $instance );
-	//Menampilkan Informasi Gempa Terkini lewat parse xml php dari bmkg.go.id
-	$url = "http://data.bmkg.go.id/gempaterkini.xml"; // from http://data.bmkg.go.id/ sesuaikan dengan lokasi yang diinginkan
-	$sUrl = file_get_contents($url, False);
-	$xml = simplexml_load_string($sUrl);
-	//End Gempa
+		//Menampilkan Informasi Gempa Terkini lewat parse xml php dari bmkg.go.id
+		$url = "http://data.bmkg.go.id/gempaterkini.xml"; // from http://data.bmkg.go.id/ sesuaikan dengan lokasi yang diinginkan
+		$sUrl = file_get_contents($url, False);
+		$xml = simplexml_load_string($sUrl);
+		//End Gempa
 		echo $before_widget;
 		if ( !empty( $title ) ) { echo $before_title . $title . $after_title; }
 			ob_start();
@@ -79,17 +90,6 @@ class BMKG_Code_Widget extends WP_Widget {
 		echo "</tr>";
 		echo "</table>";
 		//End Script GEMPA
-	}
-
-	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '' ) );
-		$title = strip_tags($instance['title']);
-		$text = format_to_edit($instance['text']);
-?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'bmkg-widget-gempa'); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
-		
-<?php
 	}
 }
 
