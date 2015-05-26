@@ -22,6 +22,7 @@ class BMKG_Prakiraan_Cuaca extends WP_Widget {
 		$control_ops = array('width' => 400, 'height' => 350);
 		$this->WP_Widget('bmkg-widget-cuaca', __('BMKG: Cuaca Jatim', 'bmkg-widget-cuaca'), $widget_ops, $control_ops);
 	}
+
 	//Form Input Title di WIdget dan ditampilkan di front page
 	function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text' => '' ) );
@@ -33,6 +34,7 @@ class BMKG_Prakiraan_Cuaca extends WP_Widget {
 		
 <?php
 	}
+	
 	//Function widget untuk menampilkan data yang di ambil data BMKG
 	function widget( $args, $instance ) {
 		extract($args);
@@ -85,7 +87,7 @@ class BMKG_Prakiraan_Cuaca extends WP_Widget {
 			  border-bottom: 2px solid #ddd;
 			}
 			</style>
-			<div style="width:100%;height:345px;overflow:auto;">
+			<div style="width:100%;height:345px;overflow:auto;margin-bottom: 20px;">
 			<table class="table table-hover table-bordered table-striped ft12">
 			<thead>
 			  <tr>
@@ -95,1350 +97,885 @@ class BMKG_Prakiraan_Cuaca extends WP_Widget {
 			  </tr>
 			</thead>
 				<tbody>
-					<!--- Cuaca Kota Blitar -->
-					<tr>
+					<!--- Cuaca Kota -->
 					<?php
 					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "blitar") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "blitar") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!--- Cuaca Kota Kediri --->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "kediri") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "kediri") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Tulungagung ----->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "tulungagung") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "tulungagung") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!--- Cuaca Kota Kepanjen --->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "kepanjen") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "kepanjen") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Malang ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "malang") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "malang") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Batu --->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "batu") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "batu") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Ponorogo ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "ponorogo") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "ponorogo") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Trenggalek ----->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "trenggalek") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "trenggalek") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!--- Cuaca Kota Pacitan ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "pacitan") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "pacitan") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!--- Cuaca Kota Lumajang -->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "lumajang") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "lumajang") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!--- Cuaca Kota Jember --->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "jember") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "jember") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!--- Cuaca Kota Banyuwangi --->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "banyuwangi") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "banyuwangi") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!--- Cuaca Kota Bondowoso --->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "bondowoso") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "bondowoso") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!--- Cuaca Kota Situbondo --->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "situbondo") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "situbondo") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!--- Cuaca Kota Probolinggo --->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "probolinggo") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "probolinggo") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!--- Cuaca Kota Pasuruan --->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "pasuruan") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "pasuruan") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!--- Cuaca Kota Sidoarjo --->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "sidoarjo") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "sidoarjo") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!--- Cuaca Kota Mojokerto ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "mojokerto") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "mojokerto") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!--- Cuaca Kota Jombang --->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "jombang") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "jombang") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Nganjuk ----->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "nganjuk") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "nganjuk") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Madiun ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "madiun") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "madiun") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!----- Cuaca Kota Magetan ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "magetan") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "magetan") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Ngawi --->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "ngawi") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "ngawi") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Bojonegoro ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "bojonegoro") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "bojonegoro") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Tuban ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "tuban") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "tuban") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Lamongan ----->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "lamongan") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "lamongan") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Gresik ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "gresik") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "gresik") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Bangkalan ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "bangkalan") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "bangkalan") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!----- Cuaca Kota Sampang ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "sampang") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "sampang") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Pamekasan ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "pamekasan") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "pamekasan") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Sumenep ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "sumenep") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "sumenep") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					</tr>
-					<!---- Cuaca Kota Surabaya ---->
-					<tr>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_1.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "surabaya") {
-					    	echo"<td>" . strtoupper($row->Kota) . "</td>";
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
-						}
-					}
-					?>
-					<?php
-					$url = "http://data.bmkg.go.id/propinsi_16_2.xml";
-					$sUrl = file_get_contents($url, False);
-					$xml = simplexml_load_string($sUrl);
-					for ($i=0; $i<sizeof($xml->Isi->Row); $i++) {
-					    $row = $xml->Isi->Row[$i];
-					    if(strtolower($row->Kota) == "surabaya") {
-					    	echo"<td align='center'>";
-						echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
-					    	echo " " . $row->Cuaca . "<br/>";
-					    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
-					 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
-						echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
-						echo "Arah Angin : " . $row->ArahAngin . "<br/>";
-						echo"</td>";
-						break;
+					$url2 = "http://data.bmkg.go.id/propinsi_16_2.xml";
+					$sUrl = file_get_contents($url, False);
+					$sUrl2 = file_get_contents($url2, False);
+					$xml = simplexml_load_string($sUrl);
+					$xml2 = simplexml_load_string($sUrl2);
+					for ($i,$i2=0; $i<sizeof($xml->Isi->Row), $i2<sizeof($xml2->Isi->Row);$i++, $i2++) {
+						$row = $xml->Isi->Row[$i];
+						$row2 = $xml2->Isi->Row[$i2];
+					    	if(strtolower($row->Kota) == "blitar")  {
+							echo "<tr>";
+							//================Kota propinsi=======================
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "kediri")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "tulungagung")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "kepanjen")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "malang")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "batu")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "ponorogo")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "trenggalek")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "pacitan")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "lumajang")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "jember")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "banyuwangi")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "bondowoso")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "situbondo")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "probolinggo")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "pasuruan")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "sidoarjo")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "mojokerto")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "jombang")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "nganjuk")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "madiun")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "magetan")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "ngawi")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "bojonegoro")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "tuban")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "lamongan")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "gresik")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "bangkalan")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "sampang")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "pamekasan")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "sumenep")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							}
+							//================//Kota propinsi=======================
+							if(strtolower($row->Kota) == "surabaya")  {						
+							echo "<tr>";
+						    	echo"<td><b>" . strtoupper($row->Kota) . "</b><br/>Koordinat<br/>";
+							echo "Lintang : " . $row->Lintang . "<br/>";
+							echo "Bujur : " . $row->Bujur . "<br/>";
+							echo"</td>";
+							//cuaca hari ini
+						    	echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row->Cuaca . ".gif' alt='" . $row->Cuaca . "' /><br/>";
+						    	echo " " . $row->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row->SuhuMin . " - ".$row->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row->KelembapanMin . " - " . $row->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row->ArahAngin . "<br/>";
+							echo"</td>";
+							//cuaca esok hari
+							echo"<td align='center'>";
+							echo"<img width='50' src='http://www.bmkg.go.id/ImagesStatus/" . $row2->Cuaca . ".gif' alt='" . $row2->Cuaca . "' /><br/>";
+						    	echo " " . $row2->Cuaca . "<br/>";
+						    	echo "Suhu : " . $row2->SuhuMin . " - ".$row2->SuhuMax . " &deg;C<br/>";
+						 	echo "Kelembapan : " . $row2->KelembapanMin . " - " . $row2->KelembapanMax . " %<br/>";
+							echo "Kecepatan Angin : " . $row2->KecepatanAngin . " (km/jam)<br/>";
+							echo "Arah Angin : " . $row2->ArahAngin . "<br/>";
+							echo"</td>";
+							echo "</tr>";
+							//end table
+							break;
+							}
 						}
-					}
 					?>
-					</tr>
 				</tbody>
 			</table>
 			</div>
